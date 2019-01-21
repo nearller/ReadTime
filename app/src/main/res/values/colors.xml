@@ -3,4 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="gray">#b8b8b8</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="light_red">#EC4A48</color>
+
+    <!--text-->
+    <color name="nb_text_default">@color/black</color>
 </resources>

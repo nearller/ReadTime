@@ -2,6 +2,7 @@ package com.vrpip.app.readtime.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,8 @@ import com.vrpip.app.readtime.base.BaseActivity;
 import com.vrpip.app.readtime.bean.User;
 import com.vrpip.app.readtime.presenter.LoginPresenter;
 import com.vrpip.app.readtime.view.LoginView;
+
+import java.util.Objects;
 
 @SuppressLint("Registered")
 public class LoginActivity extends BaseActivity implements LoginView {
@@ -31,6 +34,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
+    protected void setUpToolbar(Toolbar toolbar) {
+        super.setUpToolbar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("登录");
+    }
+
+    @Override
     protected void initView() {
         editText_username = findViewById(R.id.loginLayout_username);
         editText_password = findViewById(R.id.loginLayout_password);
@@ -45,12 +54,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     protected void setListener() {
-        button_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                User user = new User(editText_username.getText().toString(),editText_password.getText().toString());
-                loginPresenter.login(user);
-            }
+        button_login.setOnClickListener(v -> {
+            User user = new User(editText_username.getText().toString(),editText_password.getText().toString());
+            loginPresenter.login(user);
         });
     }
 
