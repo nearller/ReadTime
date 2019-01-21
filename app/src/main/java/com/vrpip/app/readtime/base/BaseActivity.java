@@ -2,22 +2,26 @@ package com.vrpip.app.readtime.base;
 
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 public abstract class BaseActivity extends Activity {
+
+    protected final String TAG = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(LayoutResID());
-        initFindViewByID();
+        // 锁定竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //初始化控件
         initView();
+        //设置数据
         initData();
+        //设置监听
         setListener();
     }
-
-    protected abstract void initFindViewByID();
-
     protected abstract int LayoutResID();
 
     protected abstract void initView();
